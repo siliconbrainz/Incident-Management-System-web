@@ -1,0 +1,34 @@
+{data: {…
+    }, status: 200, statusText: "OK", headers: {…
+    }, config: {…
+    }, …
+}
+config:
+adapter: ƒ xhrAdapter(config)
+data: "{"username":"harish","password":"harish"}"
+headers: {Accept: "application/json, text/plain, */*", Content-Type: "application/json"
+}
+maxContentLength: -1
+method: "post"
+timeout: 0
+transformRequest: [ƒ
+]
+transformResponse: [ƒ
+]
+url: "http://localhost:8000/api/auth/login"
+validateStatus: ƒ validateStatus(status)
+xsrfCookieName: "XSRF-TOKEN"
+xsrfHeaderName: "X-XSRF-TOKEN"
+__proto__: Object
+data:
+token: "02da311a7b9283263c561236b60e83e517923a4897ebcda35ec5a458af6a6401"
+user: {id: 1, username: "harish", email: "harihs@gmail.com"
+}
+__proto__: Object
+headers: {content-length: "139", content-type: "application/json"
+}
+request: XMLHttpRequest {readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, onreadystatechange: ƒ, …
+}
+status: 200
+statusText: "OK"
+__proto__: Object

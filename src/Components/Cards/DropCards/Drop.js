@@ -1,35 +1,59 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import CustomerDetails from '../CustomerCards/CustomerDetails'
-class Drop extends Component {
-    state = {
-        name: 'Harish',
-        age: '24',
-        rcNo: 'KA-04-EE-1961',
-        dateOfRequest: '2020-06-08'
-    }
-    render() {
-        const { name, age, rcNo, dateOfRequest } = this.state
-        console.log(this.props)
-        return (
-            <div>
-                {/* <div >
-                    <h3>Customer Details</h3>
-                    <div >
-                        <p>Name:{name}</p>
-                        <p>Age:{age}</p>
-                        <p>RcNo:{rcNo}</p>
-                        <p>Date of request:{dateOfRequest}</p>
-                    </div>
-                </div> */}
-                {/* <CustomerDetails /> */}
-                <form action="/">
-                    <h3>Upload Customer Remarks</h3>
-                    <textarea name="" id="" cols="30" rows="10"></textarea><br />
-                    <input type="submit" /><br />
-                </form>
-            </div>
-        )
-    }
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import StatusCards from '../StatusCards'
+import { dropVehicle, dropCalls } from '../../../Actions/drop'
+const Drop = (props) => {
+
+    const { isAuthenticated, customerData, dropVehicle } = props
+
+    const [fromData, setFromData] = useState({
+        remarks: '',
+    });
+
+    const { remarks
+    } = fromData
+    const onChange = e => setFromData({ ...fromData, [e.target.name]: e.target.value });
+
+
+    const onSubmit = e => {
+        e.preventDefault();
+        dropVehicle(remarks, props.match.params.customer_token)
+    };
+
+
+    const customer = customerData.find((item) => item.customer_token === props.match.params.customer_token)
+    var customerObj = new Object(customer);
+    if (!isAuthenticated)
+        return <Redirect to='/login' />;
+
+    return (
+        <Fragment>
+            <CustomerDetails customer={customerObj} />
+            <form onSubmit={(e) => onSubmit(e)} action='/'>
+
+                <textarea name="remarks" id="remarks" cols="30" rows="10" value={remarks} placeholder='remarks' onChange={(e) => onChange(e)}></textarea>
+                <input type="submit" placeholder='Drop' />
+            </form>
+        </Fragment>
+    )
+
 }
 
-export default Drop
+
+Drop.propTypes = {
+    dropCalls: PropTypes.func.isRequired,
+    dropVehicle: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+};
+
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    customerData: state.drop.customerData
+});
+
+export default connect(mapStateToProps, { dropCalls, dropVehicle })(Drop);

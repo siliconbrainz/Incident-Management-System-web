@@ -1,18 +1,42 @@
 import React, { Component } from 'react'
+import { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import StatusCards from '../StatusCards'
-class DropPending extends Component {
-    render() {
-        return (
-            <div>
-                <StatusCards status={'Drop Pending'} />
-                <StatusCards status={'Drop Pending'} />
-                <StatusCards status={'Drop Pending'} />
-                <StatusCards status={'Drop Pending'} />
-                <StatusCards status={'Drop Pending'} />
+import { pendingCalls } from '../../../Actions/pending'
+const DropPending = ({ pendingCalls, isAuthenticated, customerData }, props) => {
 
-            </div>
-        )
-    }
+    useEffect(() => {
+
+        pendingCalls()
+    }, []);
+
+
+    // if (!isAuthenticated)
+    //     return <Redirect to='/login' />;
+    return (
+        <div>
+            {
+                customerData.map((customer) => (
+                    <StatusCards customer={customer} {...props} key={customer.customer_token} />
+                ))
+            }
+        </div>
+    )
+
 }
 
-export default DropPending
+
+DropPending.propTypes = {
+    pendingCalls: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+};
+
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    customerData: state.pending.customerData
+});
+
+export default connect(mapStateToProps, { pendingCalls })(DropPending);

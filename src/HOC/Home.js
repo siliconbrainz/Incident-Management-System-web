@@ -7,10 +7,6 @@ import HomeCard from '../Components/Cards/HomeCards'
 import { customerDetailsFetch } from '../Actions/customer'
 
 const Home = ({ customerDetailsFetch, isAuthenticated, customerData }) => {
-    useEffect(() => {
-
-        customerDetailsFetch()
-    }, []);
 
     // if (!isAuthenticated)
     //     return <Redirect to='/login' />;

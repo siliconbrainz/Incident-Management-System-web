@@ -22,7 +22,7 @@ const Login = ({ login, isAuthenticated }) => {
     };
 
     if (isAuthenticated)
-        return <Redirect to='/' />;
+        return <Redirect to='/call-assign' />;
 
     return (
         <div className='auth'>

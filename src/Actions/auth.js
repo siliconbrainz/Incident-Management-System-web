@@ -28,18 +28,19 @@ export const login = (username, password) => async dispatch => {
 };
 
 export const logout = () => async dispatch => {
-    console.log('inside the logout action')
+    console.log('inside the logout action ', localStorage.getItem('token'))
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token')
+            'Authorization': 'token 8d8c1609f39f5f2b4928df8d5371274c541ed0fce0aba7d0071eb0415f99e892'
+            // `token ${localStorage.getItem('token')}`
         }
     };
 
     const body = JSON.stringify({});
 
     try {
-        const res = await axios.post('http://localhost:8000/api/auth/logout/', body, config);
+        const res = await axios.post('http://localhost:8000/api/auth/logout/', config);
         console.log('logout is called ')
         dispatch({
             type: LOGOUT,

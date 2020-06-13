@@ -9,7 +9,7 @@ import { customerDetailsFetch } from '../../../Actions/customer'
 import { pickVehicle } from '../../../Actions/pending'
 const Pickup = (props) => {
 
-    const { isAuthenticated, customerData, pickVehicle } = props
+    const { isAuthenticated, customerData, pickVehicle, pickUpCompleted } = props
 
     const [fromData, setFromData] = useState({
         OdoMeter: '',
@@ -49,6 +49,8 @@ const Pickup = (props) => {
     // if (!isAuthenticated)
     //     return <Redirect to='/login' />;
 
+    if (pickUpCompleted)
+        return <Redirect to='/' />;
     return (
         <Fragment>
             <CustomerDetails customer={customerObj} />
@@ -110,13 +112,15 @@ const Pickup = (props) => {
 Pickup.propTypes = {
     customerDetailsFetch: PropTypes.func.isRequired,
     pickVehicle: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
+    isAuthenticated: PropTypes.bool,
+    pickUpCompleted: PropTypes.bool,
 };
 
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    customerData: state.customer.customerData
+    customerData: state.customer.customerData,
+    pickUpCompleted: state.pending.pickUpCompleted,
 });
 
 export default connect(mapStateToProps, { customerDetailsFetch, pickVehicle })(Pickup);

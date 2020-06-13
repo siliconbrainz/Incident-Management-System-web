@@ -13,8 +13,8 @@ const DropPending = ({ pendingCalls, isAuthenticated, customerData }, props) => 
     }, []);
 
 
-    // if (!isAuthenticated)
-    //     return <Redirect to='/login' />;
+    if (!isAuthenticated)
+        return <Redirect to='/login' />;
     return (
         <div>
             {

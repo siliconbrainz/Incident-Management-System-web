@@ -1,20 +1,31 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { logout } from '../Actions/auth'
-class LogOut extends Component {
+import { useEffect } from 'react'
+import { login } from '../Actions/auth'
 
-    componentDidMount() {
-        console.log('inside the logout component did mount')
+const LogOut = (props) => {
+    const { isAuthenticated, logout } = props
+    useEffect(() => {
         logout()
-    }
-    render() {
-        return (
-            <Link to='/login'>
-                LogOut
-            </Link>
-        )
-    }
+    }, [])
+    if (!isAuthenticated)
+        return <Redirect to='/login' />
+    return (
+        <h1>Logout in process</h1>
+    )
 }
 
-export default LogOut
+
+LogOut.propTypes = {
+    isAuthenticated: PropTypes.bool
+};
+
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login, logout })(LogOut);

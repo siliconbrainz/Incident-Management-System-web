@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { PENDING_FETCH_FAIL, PENDING_FETCH_SUCCESS } from './Types'
+import { PENDING_FETCH_FAIL, PENDING_FETCH_SUCCESS, PICK_VEHICLE_SUCCESS, PICK_VEHICLE_FAIL } from './Types'
 
 export const pendingCalls = (test) => async dispatch => {
     const config = {
@@ -44,14 +44,14 @@ export const pickVehicle = (OdoMeter, customer_tokenId) => async dispatch => {
         console.log(response.data)
         alert('data is posted ')
         dispatch({
-            type: PENDING_FETCH_SUCCESS,
+            type: PICK_VEHICLE_SUCCESS,
             payload: response.data
         })
     }
     catch (err) {
         console.log(err)
         dispatch({
-            type: PENDING_FETCH_FAIL,
+            type: PICK_VEHICLE_FAIL,
 
         })
         alert('customer Pending data fetch failed')

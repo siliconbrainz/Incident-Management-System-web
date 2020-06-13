@@ -13,8 +13,8 @@ const CallAssign = ({ customerDetailsFetch, isAuthenticated, customerData }, pro
     }, []);
 
 
-    // if (!isAuthenticated)
-    //     return <Redirect to='/login' />;
+    if (!isAuthenticated)
+        return <Redirect to='/login' />;
     return (
         <div>
             {

@@ -13,8 +13,8 @@ const DropCompleted = ({ dropCalls, isAuthenticated, customerData }, props) => {
     }, []);
 
 
-    // if (!isAuthenticated)
-    //     return <Redirect to='/login' />;
+    if (!isAuthenticated)
+        return <Redirect to='/login' />;
     return (
         <div>
             {

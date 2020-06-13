@@ -1,10 +1,11 @@
-import { PENDING_FETCH_FAIL, PENDING_FETCH_SUCCESS } from '../Actions/Types'
+import { PENDING_FETCH_FAIL, PENDING_FETCH_SUCCESS, PICK_VEHICLE_SUCCESS, PICK_VEHICLE_FAIL } from '../Actions/Types'
 
 
 const initialState = {
     customerData: [],
     isAuthenticated: null,
-    loading: false
+    pickUpCompleted: false,
+    loading: false,
 }
 
 export default function (state = initialState, action) {
@@ -18,6 +19,15 @@ export default function (state = initialState, action) {
                 isAuthenticated: true,
                 loading: false,
                 customerData: payload.Picked
+            }
+        case PICK_VEHICLE_SUCCESS:
+
+
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                pickUpCompleted: true,
             }
         case PENDING_FETCH_FAIL:
             return {

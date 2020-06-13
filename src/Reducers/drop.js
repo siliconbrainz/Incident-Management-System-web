@@ -1,10 +1,11 @@
-import { DROP_FETCH_SUCCESS, DROP_FETCH_FAIL } from '../Actions/Types'
+import { DROP_FETCH_SUCCESS, DROP_FETCH_FAIL, DROP_VEHICLE_SUCCESS } from '../Actions/Types'
 
 
 const initialState = {
     customerData: [],
     isAuthenticated: null,
-    loading: false
+    loading: false,
+    dropUploaded: false,
 }
 
 export default function (state = initialState, action) {
@@ -17,13 +18,22 @@ export default function (state = initialState, action) {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
+                // dropUploaded: false,
                 customerData: payload.Completed
+            }
+        case DROP_VEHICLE_SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                dropUploaded: true,
             }
         case DROP_FETCH_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
                 loading: false,
+                dropUploaded: false,
             }
         default:
             return {

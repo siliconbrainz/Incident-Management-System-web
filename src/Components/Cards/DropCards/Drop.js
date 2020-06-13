@@ -6,10 +6,10 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import StatusCards from '../StatusCards'
 import { dropVehicle, dropCalls } from '../../../Actions/drop'
+import { pendingCalls } from '../../../Actions/pending'
 const Drop = (props) => {
-
-    const { isAuthenticated, customerData, dropVehicle } = props
-
+    const { isAuthenticated, customerData, dropVehicle, dropUploaded } = props
+    console.log(customerData, 'customerData')
     const [fromData, setFromData] = useState({
         remarks: '',
     });
@@ -22,6 +22,7 @@ const Drop = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         dropVehicle(remarks, props.match.params.customer_token)
+        return <Redirect to='/' />;
     };
 
 
@@ -29,11 +30,14 @@ const Drop = (props) => {
     var customerObj = new Object(customer);
     if (!isAuthenticated)
         return <Redirect to='/login' />;
+    if (dropUploaded)
+        return <Redirect to='/' />;
+
 
     return (
         <Fragment>
             <CustomerDetails customer={customerObj} />
-            <form onSubmit={(e) => onSubmit(e)} action='/'>
+            <form onSubmit={(e) => onSubmit(e)} >
 
                 <textarea name="remarks" id="remarks" cols="30" rows="10" value={remarks} placeholder='remarks' onChange={(e) => onChange(e)}></textarea>
                 <input type="submit" placeholder='Drop' />
@@ -45,7 +49,7 @@ const Drop = (props) => {
 
 
 Drop.propTypes = {
-    dropCalls: PropTypes.func.isRequired,
+    pendingCalls: PropTypes.func.isRequired,
     dropVehicle: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
@@ -53,7 +57,9 @@ Drop.propTypes = {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    customerData: state.drop.customerData
+    customerData: state.pending.customerData,
+    dropUploaded: state.drop.dropUploaded,
+
 });
 
-export default connect(mapStateToProps, { dropCalls, dropVehicle })(Drop);
+export default connect(mapStateToProps, { pendingCalls, dropVehicle })(Drop);

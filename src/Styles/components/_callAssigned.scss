@@ -1,0 +1,78 @@
+.callContainer{
+   
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+    margin: 1em auto;
+   
+    &__Title{
+        margin: 0em;
+    }
+
+    &__card{
+
+        width: 75%;
+        padding: 0.5em;
+        margin-top: 1em;
+        border-radius: 0.5em;
+        background: rgba($color: white, $alpha: 0.9);
+        box-shadow: 0.25em 0.25em 0.25em rgba($color: #000000, $alpha: 0.25);
+        cursor: pointer;
+       &__link{
+           display: flex;
+           flex-direction: column;
+           justify-content:space-between;
+           color: black;
+           flex-wrap: wrap;
+        
+           &__text{
+               font-style: normal;
+               font-weight: bold;
+               font-size: 0.9em;
+               line-height: 1em;
+               margin: 0;
+           }
+
+           &__id{
+               font-weight: bold;
+               font-size: 0.8em;           }
+
+           &__details{
+               display: flex;
+               justify-content: space-around;
+            &__container1{
+                &__name{
+                    padding: 0.3em 0 0 0;
+                }
+                &__model{
+                    padding: 0.3em 0 0 0;
+                }
+            }
+
+                &__container2{
+                    &__phNo{
+                        padding: 0.3em 0 0 0;
+                    }
+                    &__rcNo{
+                        padding: 0.3em 0 0 0;
+                    }
+                }
+            
+           
+           }
+       }
+
+       }
+       &__card:hover{
+        box-shadow: 0.125em 0.125em 0.25em rgba($color: #000000, $alpha: 0.25);
+    }
+    @media screen and (max-width:320px) {
+        .callContainer{
+            width:100%
+        }
+    }
+
+}
+

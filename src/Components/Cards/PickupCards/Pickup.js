@@ -32,7 +32,7 @@ const Pickup = (props) => {
     //     ServiceBook, Clock, CarPerfume, Jack,
     //     SpareWheel, Mats, DickyMat, Antenna, Remote, customerRemarks
     // } = fromData
-    const { OdoMeter
+    const { OdoMeter, FuelLevel,
     } = fromData
     const onChange = e => setFromData({ ...fromData, [e.target.name]: e.target.value });
 
@@ -43,21 +43,47 @@ const Pickup = (props) => {
 
     };
 
-
-    const customer = customerData.find((item) => item.customer_token === props.match.params.customer_token)
+    console.log(props.match.params.customer_token)
+    const customer = customerData.find((item) => {
+        let customerObj = new Object(item);
+        if (customerObj.customer_token === Number(props.match.params.customer_token)) {
+            return customerObj
+        }
+    })
     var customerObj = new Object(customer);
-    // if (!isAuthenticated)
+    // if (!isAuthenticated)  item.customer_token === props.match.params.customer_token
     //     return <Redirect to='/login' />;
 
     if (pickUpCompleted)
         return <Redirect to='/' />;
     return (
         <Fragment>
-            <CustomerDetails customer={customerObj} />
-            <form onSubmit={(e) => onSubmit(e)} action='/'>
-                <input type="number" name='OdoMeter' placeholder='OdoMeter' value={OdoMeter} onChange={e => onChange(e)}
-                    minLength='6' /><br />
-                {/* <select id="FuelLevel" name="FuelLevel" value={FuelLevel} onChange={e => onChange(e)}>
+
+            <div className='generalContainer'>
+                <h1 className='generalContainer__Title'>Call Assigned</h1>
+                <div className='generalContainer__customerDetails'>
+                    <CustomerDetails customer={customerObj} />
+                </div>
+                <div className='pickupForm'>
+                    <div className='pickupForm__card'>
+                        <h3 className='pickupForm__card__Title'> Pickup form</h3>
+                        <form className='pickupForm__card__form' onSubmit={(e) => onSubmit(e)} action='/'>
+                            <div className='pickupForm__card__form__Odometer'>
+                                <label htmlFor="Odometer" className='pickupForm__card__form__label'>OdoMeter :</label>
+                                <input className='pickupForm__card__form__Odometer__input' type="number" name='OdoMeter' placeholder='500000' id='Odometer' value={OdoMeter} onChange={e => onChange(e)}
+                                    minLength='6' />
+                            </div>
+                            <div className='pickupForm__card__form__FuelLevel'>
+                                <label htmlFor="FuelLevel" className='pickupForm__card__form__label'>FuelLevel :</label>
+                                <select id="FuelLevel" name="FuelLevel" value={FuelLevel} onChange={e => onChange(e)} className='pickupForm__card__form__FuelLevel__select'>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+
+                            {/* <select id="FuelLevel" name="FuelLevel" value={FuelLevel} onChange={e => onChange(e)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -101,8 +127,12 @@ const Pickup = (props) => {
                 <textarea name="customerRemarks" id="" cols="30" rows="10" value={customerRemarks} placeholder='customerRemarks' onChange={e => onChange(e)} /><br />
  */}
 
-                <input type="submit" placeholder='Pick' />
-            </form>
+                            <input type="submit" placeholder='Pick' />
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </Fragment>
     )
 

@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../Actions/auth';
-
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         username: '',
@@ -25,7 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
         return <Redirect to='/call-assign' />;
 
     return (
-        <div className='auth'>
+        <div className=' auth'>
             <Helmet>
                 <title>Realest Estate - Login</title>
                 <meta
@@ -33,8 +32,6 @@ const Login = ({ login, isAuthenticated }) => {
                     content='login page'
                 />
             </Helmet>
-            <h1 className='auth__title'>Sign In</h1>
-            <p className='auth__lead'>Sign into your Account</p>
             <form className='auth__form' onSubmit={e => onSubmit(e)}>
                 <div className='auth__form__group'>
                     <input
@@ -57,11 +54,16 @@ const Login = ({ login, isAuthenticated }) => {
                         minLength='6'
                     />
                 </div>
-                <button className='auth__form__button'>Login</button>
+                <div className='auth__form__group'>
+                    <div className='auth__form__groupButton'>
+                        <button className='auth__form__groupButton__login'>
+                            <p className='auth__form__groupButton__login__tag'>Login</p>
+                        </button>
+                    </div>
+
+                </div>
             </form>
-            <p className='auth__authtext'>
-                Don't have an account? <Link className='auth__authtext__link' to='/signup'>Sign Up</Link>
-            </p>
+
         </div>
     );
 };

@@ -1,0 +1,86 @@
+.auth{
+    display: flex;
+   justify-content: center;
+
+    &__form{
+       
+        margin: 5rem;
+       
+        &__group{
+            margin-bottom: 1rem;
+        }
+
+        &__input{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.5rem;
+            line-height: 2.188rem;
+            border: none;
+            background: transparent;
+            border-bottom: 3px solid rgba($color: #000000, $alpha: 0.5);
+        }
+        &__input::placeholder{
+            color: #000000;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.5rem;
+            line-height: 2.188rem;
+            opacity: 0.8;
+        }
+
+        &__input:focus{
+            outline: none;
+            border-bottom: 3px solid rgba($color: #000000, $alpha: 0.7);
+        }
+        &__groupButton{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__login{
+                width: 10em;
+                height: 3.75em;
+                border-radius: 0.99em;
+                // border: 1px solid #000000;
+                border: none;
+                box-sizing: border-box;
+                box-shadow: 0px 6px 6px rgba($color: #000000, $alpha: 0.5);
+                background: rgba($color: (#ff844f), $alpha: 1);
+                color: white;
+                cursor: pointer;
+               
+                &__tag{
+                    font-size: 1.8em;
+                    font-weight: bold;
+                    font-style: normal;
+                    margin: auto;
+                    // color:rgba($color:white, $alpha:1.0 );
+                }
+            }
+
+            &__login:hover{
+                box-shadow: 0px 2px 2px rgba($color: #000000, $alpha: 0.2);
+                background: rgba($color: (#ff844f), $alpha: 0.9);
+                color: rgba($color: white, $alpha: 0.8);
+            }
+            
+            &__login:active{
+                box-shadow: 0px 2px 2px rgba($color: #000000, $alpha: 0.2);
+                background: rgba($color: (#ff844f), $alpha: 0.9);
+                color: rgba($color: white, $alpha: 0.8);
+            }
+           
+        }
+
+
+    }
+    
+}
+
+
+body{
+    
+    background: linear-gradient(0deg, rgba(0, 255, 194, 0.25), rgba(0, 255, 194, 0.25)), url('../../Assets/Login/loginBackground.jpeg') center;
+    background-repeat: no-repeat;
+
+}

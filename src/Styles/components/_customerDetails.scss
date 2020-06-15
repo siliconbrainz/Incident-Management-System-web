@@ -1,0 +1,64 @@
+.customerDetails{
+    padding: 1em;
+    width: 100%;
+    border-radius: 0.5em;
+    background: rgba($color: white, $alpha: 0.9);
+        &__Title{
+            margin: 0em;
+            font-style: normal;
+            font-weight: bold;   
+        }
+
+        &__card{
+
+                &__phNo{
+                    color: #CC3FFE;
+                    text-decoration-line: underline;
+                    font-weight: bold;
+                }
+                &__id{
+                    font-weight: bold;
+                }
+                &__container1{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                &__container2{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                &__container3{
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    margin-right: 0.1em;
+                    flex-direction: row;
+                    position: relative;
+                    &__address{
+                        word-wrap:break-word;
+                         width: 65%;
+                         padding: 0em;
+                         margin: 0em;
+                     }
+                      
+                        &__map{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 25%;
+                            color: #CC3FFE;
+                               
+                                &__text{
+                                    font-weight: 700;
+                                    font-size: 1.5em;
+                                    color: #CC3FFE;
+                                    text-decoration-line: underline;
+                                    font-weight: bold;
+                                    text-overflow:hidden;
+                                }
+                        }
+                }
+        }
+}

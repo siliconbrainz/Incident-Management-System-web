@@ -13,10 +13,11 @@ const DropCompleted = ({ dropCalls, isAuthenticated, customerData }, props) => {
     }, []);
 
 
-    if (!isAuthenticated)
-        return <Redirect to='/login' />;
+    // if (!isAuthenticated)
+    //     return <Redirect to='/login' />;
     return (
-        <div>
+        <div className='container callContainer'>
+            <h1 className='callContainer__Title'>Drop Completed</h1>
             {
                 customerData.map((customer) => (
                     <StatusCards customer={customer} {...props} key={customer.customer_token} />

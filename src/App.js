@@ -14,6 +14,9 @@ import Pickup from './Components/Cards/PickupCards/Pickup'
 import Drop from './Components/Cards/DropCards/Drop'
 import Login from './HOC/Login'
 import { logout } from './Actions/auth'
+
+
+import './Styles/main.scss'
 export class App extends Component {
 
 

@@ -5,11 +5,15 @@ class index extends Component {
     render() {
         const { title, slug, customerData } = this.props
         return (
-            <Fragment>
-                <Link to={`/${slug}`
-                } >
-                    <h1>{title}</h1>
-                </Link>
+            <Fragment >
+                <div className='home'>
+                    <div className='home__container'>
+                        <Link to={`/${slug}`
+                        } className='home__container__link' >
+                            <h1>{title}</h1>
+                        </Link>
+                    </div>
+                </div>
             </Fragment>
         )
     }

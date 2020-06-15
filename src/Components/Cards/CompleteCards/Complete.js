@@ -12,14 +12,19 @@ const Complete = (props) => {
 
 
 
-    const customer = customerData.find((item) => item.customer_token === props.match.params.customer_token)
+    const customer = customerData.find((item) => item.customer_token === Number(props.match.params.customer_token))
     var customerObj = new Object(customer);
     if (!isAuthenticated)
         return <Redirect to='/login' />;
 
     return (
         <Fragment>
-            <CustomerDetails customer={customerObj} />
+            <div className='generalContainer'>
+                <h1 className='generalContainer__Title'>Drop Pending</h1>
+                <div className='generalContainer__customerDetails'>
+                    <CustomerDetails customer={customerObj} />
+                </div>
+            </div>
         </Fragment>
     )
 

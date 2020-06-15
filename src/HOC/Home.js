@@ -12,9 +12,9 @@ const Home = ({ customerDetailsFetch, isAuthenticated, customerData }) => {
     //     return <Redirect to='/login' />;
     return (
         <div>
-            <HomeCard title={'Call Assigned'} slug={'call-assign'} />
-            <HomeCard title={'Drop Pending'} slug={'drop-pending'} />
-            <HomeCard title={'Drop Completed'} slug={'drop-completed'} />
+            <HomeCard title={'Call assigned'} slug={'call-assign'} />
+            <HomeCard title={'Drop pending'} slug={'drop-pending'} />
+            <HomeCard title={'Drop completed'} slug={'drop-completed'} />
         </div>
     )
 }

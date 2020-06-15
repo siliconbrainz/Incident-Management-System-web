@@ -1,0 +1,74 @@
+.pickupForm{
+    display: flex;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 1em auto;
+
+        &__card{
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+        width: 100%;
+        border-radius: 0.5em;
+        background: rgba($color: white, $alpha: 0.9);
+            
+            &__Title{
+                margin: 0em;
+                font-style: normal;
+                font-weight: bold;   
+            }
+            &__form{
+                margin: 1em;
+                width: 100%;
+
+
+                    &__label{
+                        font-weight: normal;
+                        font-size: 1rem;
+                        line-height: 2.3rem;
+                    }
+
+                    &__Odometer{
+                       
+                       
+                                &__input{
+                                    border-radius: 0.5em;
+                                    border: 1px solid gray;
+                                    margin-left: 1em ;
+                                    padding: 0.5em;
+                                }
+
+                                &__input::placeholder{
+                                    letter-spacing: 0.05em;
+                                }
+
+                                &__input:focus{
+                                    outline: none;
+                                }
+                            @media screen and(max-width:320px) {
+                                &__input{
+                                    margin-left: 0 ;
+                                }
+                        }
+                        
+                    &__FuelLevel{
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+
+                        &__select{
+                            margin-left: 1em ;
+                            padding: 0.5em;
+                        }
+                    }
+                }
+        
+            }
+
+        }
+       
+}

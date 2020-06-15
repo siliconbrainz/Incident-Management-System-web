@@ -6,15 +6,24 @@ export class CustomerDetails extends Component {
         return (
 
             <Fragment>
-                <div>Customer Service Booked Details</div>
-                <p><b>Name</b>:{customer.name}</p>
-                <p><b>Address</b>:{customer.address}</p>
-                <p><b>Email</b>:{customer.email}</p>
-                <p><b>phone Number</b>:{customer.phNo}</p>
-                <p><b>Vechile RC Number</b>:{customer.rcNo}</p>
-                <p><b>Vechile Model</b>:{customer.model}</p>
-                <p><b>Date of purchase</b>:{customer.data_of_purchased}</p>
-                <p><b>Customer Request Token</b>:{customer.customer_token}</p>
+                <h3 className=' generalContainer__customerDetails__Title'>Customer details</h3>
+                <div className='generalContainer__customerDetails__card'>
+                    <p className='generalContainer__customerDetails__card__id'>#{customer.customer_token}</p>
+                    <div className='generalContainer__customerDetails__card__container1'>
+                        <p className='generalContainer__customerDetails__card__text' >{customer.name}</p>
+                        <p className='generalContainer__customerDetails__card__text' >{customer.model}</p>
+                    </div>
+                    <div className='generalContainer__customerDetails__card__container2'>
+
+                        <p className='generalContainer__customerDetails__card__text generalContainer__customerDetails__card__phNo' > +91 {customer.phNo}</p>
+                        <p className='generalContainer__customerDetails__card__text' >{customer.rcNo}</p>
+                    </div>
+                    <div className='generalContainer__customerDetails__card__container3'>
+                        <p className='generalContainer__customerDetails__card__text generalContainer__customerDetails__card__container3__address' >{customer.address}</p>
+                        <span className='generalContainer__customerDetails__card__container3__map' ><i class="fas fa-map-marker-alt" /><p className='generalContainer__customerDetails__card__container3__map__text'>Map</p></span>
+                    </div>
+                </div>
+
             </Fragment>
         )
     }

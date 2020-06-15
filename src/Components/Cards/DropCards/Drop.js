@@ -26,7 +26,7 @@ const Drop = (props) => {
     };
 
 
-    const customer = customerData.find((item) => item.customer_token === props.match.params.customer_token)
+    const customer = customerData.find((item) => item.customer_token === Number(props.match.params.customer_token))
     var customerObj = new Object(customer);
     if (!isAuthenticated)
         return <Redirect to='/login' />;
@@ -36,12 +36,21 @@ const Drop = (props) => {
 
     return (
         <Fragment>
-            <CustomerDetails customer={customerObj} />
-            <form onSubmit={(e) => onSubmit(e)} >
+            <div className='generalContainer'>
+                <h1 className='generalContainer__Title'>Drop Pending</h1>
+                <div className='generalContainer__customerDetails'>
+                    <CustomerDetails customer={customerObj} />
+                </div>
+                <div className='generalContainer__Form'>
+                    <form onSubmit={(e) => onSubmit(e)} >
 
-                <textarea name="remarks" id="remarks" cols="30" rows="10" value={remarks} placeholder='remarks' onChange={(e) => onChange(e)}></textarea>
-                <input type="submit" placeholder='Drop' />
-            </form>
+                        <textarea name="remarks" id="remarks" cols="30" rows="10" value={remarks} placeholder='remarks' onChange={(e) => onChange(e)}></textarea>
+                        <input type="submit" placeholder='Drop' />
+                    </form>
+                </div>
+            </div>
+
+
         </Fragment>
     )
 

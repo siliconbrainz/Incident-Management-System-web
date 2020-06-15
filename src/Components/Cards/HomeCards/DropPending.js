@@ -13,10 +13,12 @@ const DropPending = ({ pendingCalls, isAuthenticated, customerData }, props) => 
     }, []);
 
 
-    if (!isAuthenticated)
-        return <Redirect to='/login' />;
+    // if (!isAuthenticated)
+    //     return <Redirect to='/login' />;
     return (
-        <div>
+
+        <div className='container callContainer'>
+            <h1 className='callContainer__Title'>Drop pending</h1>
             {
                 customerData.map((customer) => (
                     <StatusCards customer={customer} {...props} key={customer.customer_token} />

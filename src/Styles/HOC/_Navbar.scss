@@ -1,0 +1,113 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0.5em;
+    background: linear-gradient(0deg, rgba(0, 255, 194, 1), rgba(0, 255, 194, 0.5));
+    &__brandLogo{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        
+        &__link{
+            
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 2em;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            &__logo{
+                width: 2em;
+                height: 2em;
+                border-radius: 50%;
+                background-color:rgba(255, 132, 79, 0.99);
+                color: white;
+            }
+        }
+    }
+
+    &__links{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__link{
+            margin: 0 0.5em ;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 2em;
+            &__nav{
+                text-decoration: none;
+                color: white;
+            }
+
+            &__profile{
+                // background: url('../../Assets/crop.jpeg');
+                // background-position: cover;
+                // background-repeat: no-repeat;
+                // width: 2em;
+                // height: 2em;
+                
+                    
+                &__image{
+                    outline: none;
+               padding: 0.25em;
+                border-radius: 50%;
+               border:1px solid rgba(255, 132, 79, 0.99);
+                color: white;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:320px){
+        &__links{
+
+            &__link{
+                margin: 0em;
+               &__profile{
+                   display: none;
+               }
+            }
+        }
+        
+    }
+}
+
+ul{
+    padding-inline-start:0;
+    margin: 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+.nav__logout{
+    width: 4em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 132, 79, 0.99);
+    // border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0em 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    border-radius: 0.2em;
+    cursor: pointer;
+    
+}
+
+
+.nav__logout:hover {
+    background: rgba(255, 132, 79, 0.95);
+    box-shadow: 0em 0.1em 0.1em rgba(0, 0, 0, 0.25);
+}
+
+
